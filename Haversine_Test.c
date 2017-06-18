@@ -5,6 +5,24 @@
 #define R 6371 //radius of the Earth
 #define TO_RAD (3.1415926536 / 180) //radians
 
+double random_number(int min_num, int max_num)
+{
+    int result = 0, low_num = 0, hi_num = 0;
+
+    if (min_num < max_num)
+    {
+        low_num = min_num;
+        hi_num = max_num + 1; // include max_num in output
+    } else {
+        low_num = max_num + 1; // include max_num in output
+        hi_num = min_num;
+    }
+
+    srand(time(NULL));
+    result = (double)(rand() % (hi_num - low_num)) + low_num;
+    return result;
+}
+
 double dist(double th1, double ph1, double th2, double ph2)
 {
 	double dx, dy, dz;
@@ -33,20 +51,4 @@ int main()
     }
 }
 
-double random_number(int min_num, int max_num)
-{
-    int result = 0, low_num = 0, hi_num = 0;
 
-    if (min_num < max_num)
-    {
-        low_num = min_num;
-        hi_num = max_num + 1; // include max_num in output
-    } else {
-        low_num = max_num + 1; // include max_num in output
-        hi_num = min_num;
-    }
-
-    srand(time(NULL));
-    result = (double)(rand() % (hi_num - low_num)) + low_num;
-    return result;
-}
