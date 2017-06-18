@@ -19,9 +19,34 @@ double dist(double th1, double ph1, double th2, double ph2)
 
 int main()
 {
-	double d = dist(36.12, -86.67, 33.94, -118.4);
-	/* Americans don't know kilometers */
-	printf("dist: %.1f km (%.1f mi.)\n", d, d / 1.609344);
-
+    for (int i=0; i++; i< 10){
+        double val1 = random_number(0,180);
+        double val2 = random_number(0,180);
+        double val3 = random_number(0,180);
+        double val4 = random_number(0,180);
+	    double d = dist(val1,val2,val3,val4);
+	    /* Americans don't know kilometers */
+        printf("val1: %lf, val2: %lf, val3: %lf, val4: %lf", val1, val2, val3, val4);
+	    printf("dist: %.1f km (%.1f mi.)\n", d, d / 1.609344);
+    }
 	return 0;
+    }
+}
+
+double random_number(int min_num, int max_num)
+{
+    int result = 0, low_num = 0, hi_num = 0;
+
+    if (min_num < max_num)
+    {
+        low_num = min_num;
+        hi_num = max_num + 1; // include max_num in output
+    } else {
+        low_num = max_num + 1; // include max_num in output
+        hi_num = min_num;
+    }
+
+    srand(time(NULL));
+    result = (double)(rand() % (hi_num - low_num)) + low_num;
+    return result;
 }
